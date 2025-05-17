@@ -9,15 +9,13 @@
  * Return: Nothing
 */
 void handle_format_specifier(char c, va_list args)
-{
-    char specs[] = {'c', 's', 'd', 'i', 'b', 'u', 'o', 'x', 'X', 'S', 'p', 'r', 'R'};
-    
+{    
     switch (c) {
         case 'c':
             print_character(args);
-            return;
+            break;
         case 's':
             print_string(args);
-            return;
+            break;
     }
 }
