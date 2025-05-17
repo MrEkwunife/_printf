@@ -18,21 +18,8 @@ int _printf(const char *format, ...)
         if (format[i] == '%')
         {
             i++;
-            if (format[i] == 's')
-            {
-                count += print_string(args);
-            }
-            else if (format[i] == 'c')
-            {
-                char c = va_arg(args, int);
-                _putchar(c);
-                count++;
-            }
-            else if (format[i] == '%')
-            {
-                _putchar('%');
-                count++;
-            }
+            handle_format_specifier(format[i], args);
+            continue;
         }
         else
         {
@@ -54,16 +41,15 @@ int _printf(const char *format, ...)
 int print_string(va_list args)
 {
     char *str = va_arg(args, char *);
-    int count = 0;
 
     while (*str)
     {
         _putchar(*str++);
-        count++;
     }
-
-    return count;
 }
 
-
-
+void print_character(va_list args)
+{
+    char arg = va_arg(args, int);
+    _putchar(arg);
+}
