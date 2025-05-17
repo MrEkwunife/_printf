@@ -1,42 +1,69 @@
 #include "main.h"
-#include <stdarg.h>
 
 /**
  * _printf - prints formatted string to stdout
+ * @format: the format string
  *
+ * Return: number of characters printed
  */
 int _printf(const char *format, ...)
 {
     va_list args;
-    int i;
+    int i, count = 0;
 
     va_start(args, format);
-    for (i = 0; i < _strlen(format); i++)
-    {
-        if (format[i] == '%' && format[i+1] == 'c')
-            _call_to_void_function_that_prints_a_char;
-        else if (format[i] == '%' && format[i+1] == 's')
-            _call_to_void_function_that_prints_a_string;
-        else if (format[i] == '%' && format[i + 1] == '%')
-            print('%')
 
+    for (i = 0; format && format[i] != '\0'; i++)
+    {
+        if (format[i] == '%')
+        {
+            i++;
+            if (format[i] == 's')
+            {
+                count += print_string(args);
+            }
+            else if (format[i] == 'c')
+            {
+                char c = va_arg(args, int);
+                _putchar(c);
+                count++;
+            }
+            else if (format[i] == '%')
+            {
+                _putchar('%');
+                count++;
+            }
+        }
+        else
+        {
+            _putchar(format[i]);
+            count++;
+        }
     }
-    print("\n")
+
+    va_end(args);
+    return (count);
 }
 
 /**
- * print_string - prints string
- * @string to be printed
+ * print_string - prints a string
+ * @args: va_list containing the string
  *
- * Return: nothing
+ * Return: number of characters printed
  */
-void print_string(va_list string)
+int print_string(va_list args)
 {
-    char *local_string = va_arg(string, char*);
+    char *str = va_arg(args, char *);
+    int count = 0;
 
-    while (*local_string)
+    while (*str)
     {
-        _putchar(*local_string);
-        local_string++;
+        _putchar(*str++);
+        count++;
     }
+
+    return count;
 }
+
+
+
