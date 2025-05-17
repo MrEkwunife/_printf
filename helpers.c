@@ -8,14 +8,47 @@
  *
  * Return: Nothing
 */
-void handle_format_specifier(char c, va_list args)
-{    
+int handle_format_specifier(char c, va_list args)
+{
     switch (c) {
         case 'c':
-            print_character(args);
-            break;
+            return(print_character(args));
         case 's':
-            print_string(args);
-            break;
+            return(print_string(args));
+        default:
+            return (1);
     }
+}
+
+/**
+ * print_string - prints a string
+ * @args: va_list containing the string
+ *
+ * Return: number of characters printed
+ */
+int print_string(va_list args)
+{
+    char *str = va_arg(args, char *);
+    int i = 0;
+
+    while (*str)
+    {
+        _putchar(*str++);
+        i++;
+    }
+    return (i);
+}
+
+
+/**
+ * print_character - prints a format type of char
+ * @args: should point to char to be printed
+ *
+ * Return: Always 1
+ */
+int print_character(va_list args)
+{
+    char arg = va_arg(args, int);
+    _putchar(arg);
+    return (1);
 }
