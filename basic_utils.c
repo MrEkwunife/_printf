@@ -15,11 +15,13 @@ int get_integer_digits(int number)
         return (0);
     
     temp = number;
-    while (temp > 10)
+    temp /= 10;
+    while (temp > 0)
     {
         temp /= 10;
         inc *= 10;
     }
+
     while (inc > 0)
     {
         div = number / inc;
