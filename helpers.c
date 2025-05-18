@@ -15,6 +15,10 @@ int handle_format_specifier(char c, va_list args)
             return(print_character(args));
         case 's':
             return(print_string(args));
+        case 'd':
+            return(print_integer(args));
+        case 'i':
+            return(print_integer(args));
         default:
             return (1);
     }
@@ -51,4 +55,14 @@ int print_character(va_list args)
     char arg = va_arg(args, int);
     _putchar(arg);
     return (1);
+}
+
+int print_integer(va_list args)
+{
+    int arg, count;
+
+    arg = va_arg(args, int);
+    count = get_integer_digits(arg);
+
+    return (count);
 }
