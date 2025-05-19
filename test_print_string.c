@@ -3,7 +3,7 @@
 
 int main(void)
 {
-    int n, o, i;
+    int n, o, i, len;
 
     /* Test 1 */
     n = _printf("Name:%s%c\n", "CHIMOBI", 'c');
@@ -29,7 +29,9 @@ int main(void)
      * 6
      */
     /* Test integers*/
-    _printf("%d\n", 123456789);
-    _printf("%i\n", 987654321);
+    len = _printf("%d\n", 123456789);
+    _printf("%i\n", len);
+    len = _printf("%i\n", 987654321);
+    _printf("%d\n", 10001);
     return (0);
 }
