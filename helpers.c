@@ -62,7 +62,7 @@ int print_integer(va_list args)
     int arg, count;
 
     arg = va_arg(args, int);
-    count = get_integer_digits(arg);
+    count = print_integer_digits(arg);
 
     return (count);
 }

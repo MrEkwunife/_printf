@@ -12,6 +12,6 @@ int print_string(va_list args);
 int print_character(va_list args);
 int print_integer(va_list args);
 int handle_format_specifier(char c, va_list args);
-int get_integer_digits(int number);
+int print_integer_digits(int number);
 
 #endif
