@@ -7,13 +7,13 @@
  * @number: The number to be worked on.
  * Return: The number of digits in the number.
  */
-int get_integer_digits(int number)
+int print_integer_digits(int number)
 {
     int div, temp, inc = 1, count = 0;
 
     if (number < 0)
         return (0);
-    
+
     temp = number;
     temp /= 10;
     while (temp > 0)
@@ -31,6 +31,6 @@ int get_integer_digits(int number)
 
         inc /= 10;
     }
-    
+
     return (count);
 }
