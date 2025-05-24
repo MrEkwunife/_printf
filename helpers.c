@@ -57,6 +57,12 @@ int print_character(va_list args)
     return (1);
 }
 
+/**
+ * print_integer - prints a format type of integer
+ * @args: should point to the integer number to be printed.
+ *
+ * Return: The amount of digits in the number.
+ */
 int print_integer(va_list args)
 {
     int arg, count;
